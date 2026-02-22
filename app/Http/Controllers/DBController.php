@@ -133,31 +133,35 @@ class DBController extends Controller
             ['firstname' => 'page1', 'secondname' => 'slug1'],
             ['firstname' => 'page2', 'secondname' => 'slug2'],
         ]);
-        $changetable3 = DB::table('user')->where('id',5)->update([
+        $changetable3 = DB::table('user')->where('id', 5)->update([
             'firstname' => 'page',
             'secondname' => 'slug',
         ]);
-        $changetable4 = DB::table('user')->where('age',30)->update([
-            'salary' =>500,
+        $changetable4 = DB::table('user')->where('age', 30)->update([
+            'salary' => 500,
         ]);
         $changetable5 = DB::table('user')
-		->where('firstname','John')
-		->increment('age');
+            ->where('firstname', 'John')
+            ->increment('age');
         $changetable6 = DB::table('user')
-		->where('firstname', 'John')
-        ->decrement('age');
+            ->where('firstname', 'John')
+            ->decrement('age');
         $changetable7 = DB::table('user')
-		->where('age',30)
-		->increment('salary',100);
+            ->where('age', 30)
+            ->increment('salary', 100);
         $changetableid = DB::table('user')->where('id', $changetable)->first();
-        $dropuserid = DB::table('user')
-		->where('id', 5)
-		->delete();
+        /* $dropuserid = DB::table('user')
+            ->where('id', 5)
+            ->delete();
         $dropuserage = DB::table('user')
-		->where('age', 30)
-		->delete();
-        $dropallusers = DB::table('user')->delete();
-        return view('post.pshow', ['users' => $users, 'users2' => $users2, 'users3' => $users3, 'users4' => $users4, 'users5' => $users5, 'users6' => $users6, 'users7' => $users7, 'users8' => $users8, 'users9' => $users9, 'users10' => $users10, 'users11' => $users11, 'users12' => $users12, 'users13' => $users13, 'users14' => $users14, 'users15' => $users15, 'users16' => $users16, 'users17' => $users17, 'users18' => $users18, 'users19' => $users19, 'users20' => $users20, 'users21' => $users21, 'users22' => $users22, 'users23' => $users23, 'users24' => $users24, 'users25' => $users25, 'users26' => $users26, 'users27' => $users27, 'users28' => $users28, 'users29' => $users29, 'users29a' => $users29a, 'users30' => $users30, 'users31' => $users31, 'users32' => $users32, 'users33' => $users33, 'users34' => $users34, 'users35' => $users35, 'users36' => $users36, 'users37' => $users37, 'changetable' => $changetable, 'changetable1' => $changetableid]);
+            ->where('age', 30)
+            ->delete();
+        $dropallusers = DB::table('user')->delete(); */
+        $tableandtable = DB::table('user')
+            ->leftJoin('cities', 'user.id', '=', 'cities.id')
+            ->select('user.*', 'cities.city as city_name')
+            ->get();
+        return view('post.pshow', ['users' => $users, 'users2' => $users2, 'users3' => $users3, 'users4' => $users4, 'users5' => $users5, 'users6' => $users6, 'users7' => $users7, 'users8' => $users8, 'users9' => $users9, 'users10' => $users10, 'users11' => $users11, 'users12' => $users12, 'users13' => $users13, 'users14' => $users14, 'users15' => $users15, 'users16' => $users16, 'users17' => $users17, 'users18' => $users18, 'users19' => $users19, 'users20' => $users20, 'users21' => $users21, 'users22' => $users22, 'users23' => $users23, 'users24' => $users24, 'users25' => $users25, 'users26' => $users26, 'users27' => $users27, 'users28' => $users28, 'users29' => $users29, 'users29a' => $users29a, 'users30' => $users30, 'users31' => $users31, 'users32' => $users32, 'users33' => $users33, 'users34' => $users34, 'users35' => $users35, 'users36' => $users36, 'users37' => $users37, 'changetable' => $changetable, 'changetable1' => $changetableid, 'tableID' => $tableandtable]);
 
     }
 }

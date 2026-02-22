@@ -196,4 +196,7 @@
         </table>
         <ul>{{ $changetable }}</ul>
         <ul>{{ $changetable1->id }}</ul>
+        @foreach($tableID as $user)
+            <p>Юзер: {{ $user->firstname }}, Город: {{ $user->city_name }}</p>
+        @endforeach
 </x-show>

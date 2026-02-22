@@ -11,7 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::rename('namescape','name');
+        Schema::create('categories', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('title');
+        });
     }
 
     /**
@@ -19,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('name');
+        Schema::dropIfExists('categories');
     }
 };

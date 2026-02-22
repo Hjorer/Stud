@@ -4,14 +4,15 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::rename('namescape','name');
+        Schema::table('post', function (Blueprint $table) {
+            $table->renameColumn('title', 'subject');
+        });
     }
 
     /**
@@ -19,6 +20,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('name');
+        Schema::dropIfExists('post');
     }
 };

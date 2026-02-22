@@ -11,7 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::rename('namescape','name');
+        Schema::create('orders', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
+            $table->enum('status', ['pending', 'processing', 'completed', 'declined']);
+        });
     }
 
     /**
@@ -19,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('name');
+        Schema::dropIfExists('orders');
     }
 };

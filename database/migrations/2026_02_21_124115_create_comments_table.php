@@ -11,7 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::rename('namescape','name');
+        Schema::create('comments', function (Blueprint $table) {
+            $table->increments('id');
+            $table->text('body');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -19,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('name');
+        Schema::dropIfExists('comments');
     }
 };

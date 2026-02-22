@@ -11,7 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::rename('namescape','name');
+        Schema::create('promotions', function (Blueprint $table) {
+            $table->id();
+            $table->date('start_date');
+            $table->string('clicks')->default('0');
+            $table->date('end_date')->nullable();
+            $table->timestamps();
+        });
     }
 
     /**
@@ -19,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('name');
+        Schema::dropIfExists('promotions');
     }
 };

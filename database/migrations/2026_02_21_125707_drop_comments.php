@@ -11,7 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::rename('namescape','name');
+        Schema::table('comments',function(Blueprint $table){
+            $table->softDeletes('deleted_at', precision: 0)->after('updated_at');
+        });
     }
 
     /**
@@ -19,6 +21,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('name');
+        Schema::dropIfExists('comments');
     }
 };
