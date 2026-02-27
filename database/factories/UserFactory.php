@@ -16,7 +16,6 @@ class UserFactory extends Factory
      * The current password being used by the factory.
      */
     protected static ?string $password;
-
     /**
      * Define the model's default state.
      *
@@ -35,11 +34,13 @@ class UserFactory extends Factory
    public function definition(): array
     {
         return [
-            // Используем поля, которые вы прописали в $fillable модели User
             'firstname'  => fake()->firstName(),
             'secondname' => fake()->lastName(),
             'email'      => fake()->unique()->safeEmail(),
+            'password'      => fake()->unique()->password(),
+            'remember_token'      => fake()->unique()->numberBetween(1,100),
             'age'        => fake()->numberBetween(18, 65),
+            'birthday' => $this->faker->date(),
         ];
     }
 

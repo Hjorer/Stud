@@ -6,6 +6,10 @@ use App\Http\Controllers\TypeController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\FourController;
 use App\Http\Controllers\DBController;
+use App\Http\Controllers\UserControllerone;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\PostsController;
 /* 
 //Маршруты 1
 //1
@@ -139,6 +143,14 @@ Route::get('/three', [UserController::class, 'methodthree']); */
 //1
 Route::get('/pbz1',[FourController::class,'one']);
 Route::get('/show',[DBController::class,'show']);
+Route::get('/product',[ProductController::class,'show'])->name('product.show');
+Route::post('/product',[ProductController::class,'store'])->name('product.store');
+Route::delete('/product/{id}',[ProductController::class,'drop'])->name('product.drop');
 Route::get('/show1',[DBController::class,'show1']);
 Route::get('/show2',[DBController::class,'show2']);
 Route::get('/show3',[DBController::class,'show3']);
+Route::get('/users  ',[UserControllerone::class ,  'show']);
+Route::get('/showone',[UserControllerone::class ,  'show1']);
+Route::get('/showtwo',[UserControllerone::class ,  'showuser']);
+Route::get('/s',[ArticleController::class ,'show']);
+Route::get('/slay',[PostsController::class ,'show']);

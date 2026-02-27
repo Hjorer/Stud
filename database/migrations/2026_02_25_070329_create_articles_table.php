@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        /* Schema::table('userss', function (Blueprint $table) {
-            $table->dropColumn(['age']);
-            $table->dropColumn(['firstname', 'secondname']);
+        Schema::create('blog_articles', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->text('body');
+            $table->integer('views_count')->default(0);
+            $table->timestamps();
         });
- */
     }
 
     /**
@@ -23,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('blog_articles');
     }
 };

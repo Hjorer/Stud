@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->string('email')->comment('my comment');
             $table->string('salary')->default('0');
             $table->integer('age')->unsigned()->nullable()->change();
-            $table->string('sex')->after('id')->change();
+            $table->string('sex')->after('id')->default('none')->change();
         });
         Schema::table('users', function (Blueprint $table) {
             $table->renameColumn('name', 'firstname');

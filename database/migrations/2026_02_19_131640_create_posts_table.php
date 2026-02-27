@@ -16,6 +16,9 @@ return new class extends Migration
             $table->timestamps();
             $table->string('name');
             $table->text('text');
+            $table->text('title');
+            $table->string('view_count');
+            $table->boolean('published_at');
         });
     }
 

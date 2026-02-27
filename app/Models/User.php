@@ -10,7 +10,7 @@ class User extends Model
     use HasFactory;
 
     // 1. Указываем конкретное имя таблицы
-    protected $table = 'user';
+    protected $table = 'userss';
 
     // 2. Разрешаем массовое заполнение полей (необходимо для фабрик)
     protected $fillable = [
@@ -19,7 +19,12 @@ class User extends Model
         'email',
         'age',
     ];
-
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+        'password',
+        'remember_token',
+    ];
     // 3. Если в таблице НЕТ колонок created_at и updated_at, отключите их:
     // public $timestamps = false;
 }
