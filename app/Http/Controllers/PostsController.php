@@ -8,8 +8,10 @@ class PostsController extends Controller
 {
     public function show()
     {
-        $droppost = Post::where('text', 'LIKE', '%$Laravel%')->orWhere('view_count', '>', 1000)->skip(5)->take(10)->get();
+        //Zadanie 12
+        $z12adanie = Post::where('text', 'LIKE', '%$Laravel%')->orWhere('view_count', '>', 1000)->skip(5)->take(10)->get();
+        //Zadanie14
         $droppostdate = Post::whereNotNull('published_at')->whereDate('created_at', '2026-02-27')->get();
-        return $droppost . '<p>Z2</p>' . $droppostdate;
+        return $z12adanie . '<p>Z2</p>' . $droppostdate;
     }
 }
