@@ -22,7 +22,7 @@ class ArticleFactory extends Factory
             'title' => $this->faker->sentence(),
             'body' => $this->faker->paragraphs(3, true),
             'views_count' => fake()->numberBetween(1000, 10000),
-            'published_at' => $this->faker->boolean(),
+            'published_at' => $this->faker->date(),
         ];
     }
 }

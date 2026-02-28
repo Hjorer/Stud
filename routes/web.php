@@ -155,5 +155,6 @@ Route::get('/users  ',[UserControllerone::class ,  'show']);
 Route::get('/showone',[UserControllerone::class ,  'show1']);
 Route::get('/showtwo',[UserControllerone::class ,  'showuser']);
 Route::get('/s',[ArticleController::class ,'show']);
+Route::get('/st',[ArticleController::class ,'store']);
 Route::get('/slay',[PostsController::class ,'show']);
 Route::get('/drop',[ProductdropController::class,'show']);

@@ -11,21 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('blog_articles', function (Blueprint $table) {
+        Schema::create('users8a2', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('body');
-            $table->integer('views_count')->default(0);
-            $table->date('published_at');
             $table->timestamps();
+            $table->string('name');
+            $table->string('city_id');
+            $table->string('position_id');
         });
     }
-
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('blog_articles');
+        Schema::dropIfExists('cities8a4s');
     }
 };

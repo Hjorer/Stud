@@ -1,0 +1,3 @@
+<x-product>
+    
+</x-product>

@@ -17,9 +17,10 @@ return new class extends Migration
             $table->string('name',100);
             $table->string('description',255)->nullable();
             $table->decimal('price', total: 8, places: 2);
-            $table->integer('quantity');
+            $table->integer('quantity')->default(1);
             $table->boolean('is_active')->default(true);
             $table->timestamp('timeadd')->nullable();
+            $table->json('options')->nullable();
         });
     }
 

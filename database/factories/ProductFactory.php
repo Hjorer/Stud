@@ -21,6 +21,11 @@ class ProductFactory extends Factory
             'price' => fake()->unique(true)->numberBetween(250,1000),
             'quantity' => fake()->unique(true)->numberBetween(0,15),
             'is_active'=>$this ->faker->boolean(),
+            /* 'options'   => [
+                'material' => $this->faker->word(),
+                'weight'   => $this->faker->numberBetween(100, 5000) . 'g',
+                'tags'     => $this->faker->words(3),
+            ], */
         ];
     }
 }
