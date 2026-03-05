@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class User8Factory extends Factory
 {
-    protected $table = 'user8';
+    protected $table = 'users8a2';
     /**
      * Define the model's default state.
      *
@@ -18,9 +18,8 @@ class User8Factory extends Factory
     public function definition(): array
     {
         return [
-            'login' => $this->faker->unique()->userName(),
+            'login' => $this->faker->firstName(),
             'password'=>bcrypt('password'),
-            'user_id'    => $this->faker->uuid(),
         ];
     }
 }

@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class Users8a2Factory extends Factory
 {
+    protected $table = 'users8a2s';
     /**
      * Define the model's default state.
      *
@@ -16,10 +17,15 @@ class Users8a2Factory extends Factory
      */
     public function definition(): array
     {
+        static $order = 1;
+        static $order1 = 1;
+        static $order2 = 1;
         return [
-            'name' => $this->faker->firstName(),
-            'city_id' => \App\Models\cities8a2::factory(),
-            'position_id' => \App\Models\position8::factory(),
+            'name' => $this->faker->unique()->userName(),
+            'country_id'    => $order++,
+            'city_id' => $order1++,
+            'position_id' => $order2++,
+            'population' => $this->faker->numberBetween(10000, 10000000),
         ];
     }
 }

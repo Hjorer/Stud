@@ -17,10 +17,11 @@ class Cities8a2Factory extends Factory
      */
     public function definition(): array
     {
+        static $order = 1;
         return [
             'name' => $this->faker->city(),
-            'population' => $this->faker->numberBetween(10000, 10000000),
-            'country_id'    => \App\Models\countries8::factory(),
+            'population' => $this->faker->numberBetween(10000, 200000),
+            'country_id'    => $order++,
         ];
     }
 }

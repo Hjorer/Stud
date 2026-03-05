@@ -15,13 +15,15 @@ class Profiles8Factory extends Factory
      *
      * @return array<string, mixed>
      */
+    
     public function definition(): array
     {
+        static $order = 1;
         return [
             'name' => $this->faker->firstName(),
             'surname'  => $this->faker->lastName(),
             'email'      => $this->faker->unique()->safeEmail(),
-            'user_id' => \App\Models\user8::factory(),
+            'user_id' => $order++,
         ];
     }
 }

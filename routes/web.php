@@ -11,7 +11,8 @@ use App\Http\Controllers\ProducttController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProductdropController;
-
+use App\Http\Controllers\Practice8Controller;
+use App\Http\Controllers\practice8a2;
 /* 
 //Маршруты 1
 //1
@@ -158,3 +159,5 @@ Route::get('/s',[ArticleController::class ,'show']);
 Route::get('/st',[ArticleController::class ,'store']);
 Route::get('/slay',[PostsController::class ,'show']);
 Route::get('/drop',[ProductdropController::class,'show']);
+Route::get('/practice8',[Practice8Controller::class,'show']);
+Route::get('/practice8a2',[practice8a2::class,'show']);

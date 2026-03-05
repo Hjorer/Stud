@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class Position8Factory extends Factory
 {
-    protected $table = 'position8';
+    protected $table = 'position';
     /**
      * Define the model's default state.
      *

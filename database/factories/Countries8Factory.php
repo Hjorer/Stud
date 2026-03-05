@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class Countries8Factory extends Factory
 {
-    protected $table = 'countries8';
+    protected $table = 'Countries8';
     /**
      * Define the model's default state.
      *
@@ -18,7 +18,7 @@ class Countries8Factory extends Factory
     public function definition(): array
     {
         return [
-            'name'    => $this->faker->country(),
+            'name' => $this->faker->country(),
         ];
     }
 }

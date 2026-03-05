@@ -18,7 +18,7 @@ class Cities8a3Factory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name'  => $this->faker->city(),
         ];
     }
 }

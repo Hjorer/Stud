@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class position8 extends Model
 {
+    protected $table = 'position';
     use HasFactory;
 }

@@ -5,11 +5,11 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\cities8a4>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\rolesusersid>
  */
-class Cities8a4Factory extends Factory
+class rolesusersidFactory extends Factory
 {
-    protected $table = 'cities8a4';
+
     /**
      * Define the model's default state.
      *
@@ -17,8 +17,11 @@ class Cities8a4Factory extends Factory
      */
     public function definition(): array
     {
+        static $order = 1;
+        static $order1 = 1;
         return [
-            'name'  => $this->faker->city(),
+            'user_id' => $order++, 
+            'roles_id' => $order1++,
         ];
     }
 }

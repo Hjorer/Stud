@@ -15,8 +15,10 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name');
-            $table->string('city_id');
-            $table->string('position_id');
+            $table->string('population');
+            $table->integer('city_id');
+            $table->integer('position_id');
+            $table->integer('country_id');
         });
     }
 

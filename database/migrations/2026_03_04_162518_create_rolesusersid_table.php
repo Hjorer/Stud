@@ -11,19 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users8a2', function (Blueprint $table) {
+        Schema::create('rolesusersid', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('name');
-            $table->string('city_id');
-            $table->string('position_id');
+            $table->integer('roles_id');
+            $table->integer('user_id');
         });
     }
+
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('cities8a4s');
+        Schema::dropIfExists('rolesusersid');
     }
 };
