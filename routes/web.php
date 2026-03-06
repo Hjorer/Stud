@@ -6,13 +6,12 @@ use App\Http\Controllers\TypeController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\FourController;
 use App\Http\Controllers\DBController;
-use App\Http\Controllers\UserControllerone;
 use App\Http\Controllers\ProducttController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProductdropController;
 use App\Http\Controllers\Practice8Controller;
-use App\Http\Controllers\practice8a2;
+use App\Http\Controllers\Practice9Controller;
 /* 
 //Маршруты 1
 //1
@@ -152,12 +151,17 @@ Route::delete('/drop/{id}',[ProductdropController::class,'drop'])->name('product
 Route::get('/show1',[DBController::class,'show1']);
 Route::get('/show2',[DBController::class,'show2']);
 Route::get('/show3',[DBController::class,'show3']);
-Route::get('/users  ',[UserControllerone::class ,  'show']);
-Route::get('/showone',[UserControllerone::class ,  'show1']);
-Route::get('/showtwo',[UserControllerone::class ,  'showuser']);
 Route::get('/s',[ArticleController::class ,'show']);
 Route::get('/st',[ArticleController::class ,'store']);
 Route::get('/slay',[PostsController::class ,'show']);
 Route::get('/drop',[ProductdropController::class,'show']);
 Route::get('/practice8',[Practice8Controller::class,'show']);
-Route::get('/practice8a2',[practice8a2::class,'show']);
+Route::get('/practice9',[Practice9Controller::class,'show']);
+Route::post('/practice9/task2',[Practice9Controller::class,'task2']);
+Route::post('/practice9/task3',[Practice9Controller::class,'task3']);
+Route::post('/practice9/task4',[Practice9Controller::class,'task4']);
+Route::post('/practice9/task5',[Practice9Controller::class,'task5']);
+Route::post('/practice9/task6',[Practice9Controller::class,'task6']);
+Route::post('/practice9/task7',[Practice9Controller::class,'task7']);
+Route::match(['get','post'],'/practice9/task8/{id?}/{login?}',[Practice9Controller::class,'task8'])->name('user.profile');
+Route::get('/practice9/test/method',[Practice9Controller::class,'task9to12']);
