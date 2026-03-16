@@ -27,8 +27,17 @@ class Practice12Controller extends Controller
     public function show(Request $request)
     {
         session(['user_id' => 123, 'role' => 'admin', 'theme' => 'dark']);
+        if (!session()->has('time')) {
+            session(['time' => now()->toDateTimeString()]);
+        }
+        $request->session()->put('arr', ['1', '2', '3']);
+        $request->session()->push('arr', '4');
+        session(['key'=>'Obeme']);
+        $value = session(['key']);
+        $value = session('key','default');
+        dump(session('time'));
         $massive = session()->all();
-        dump($massive);
+        dump($massive,$value);
         $counter = $request->session()->get('counter', 1);
         $request->session()->flush();
         return view('practice12.practice12', ['counter' => $counter]);

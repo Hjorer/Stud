@@ -26,4 +26,8 @@ use Illuminate\Http\Request;
             $z27 = roles::with('users')->get();
             return view('post.user8', compact('z16'), ['z3' => $z3adanie, 'z5' => $z5adanie, 'z7' => $z7adanie, 'z8' => $z8adanie, 'z11a12' => $z11a12adanie, 'z15' => $z15, 'z17' => $z17adanie, 'z20' => $z20,'z24'=>$z24,'z27'=>$z27]);
         }
+        public function prctice13task6($id){
+             $user = users8::findOrFail($id);
+            return view('practice13.user', compact('user'));
+        }
     }

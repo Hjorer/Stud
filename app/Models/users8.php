@@ -12,7 +12,7 @@ class users8 extends Model
     {
         return $this->hasOne(\App\Models\profiles8::class,'user_id','id');
     }
-    
+     protected $guarded = []; 
     public function profiles()
     {
         return $this->hasMany(profiles8::class, 'user_id','id');

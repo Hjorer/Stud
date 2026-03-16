@@ -14,6 +14,8 @@ use App\Http\Controllers\Practice8Controller;
 use App\Http\Controllers\Practice9Controller;
 use App\Http\Controllers\Practice11Controller;
 use App\Http\Controllers\Practice12Controller;
+use App\Http\Controllers\Practice13Controller;
+use App\Http\Controllers\Practice14Controller;
 /* 
 //Маршруты 1
 //1
@@ -157,7 +159,8 @@ Route::get('/s',[ArticleController::class ,'show']);
 Route::get('/st',[ArticleController::class ,'store']);
 Route::get('/slay',[PostsController::class ,'show']);
 Route::get('/drop',[ProductdropController::class,'show']);
-Route::get('/practice8',[Practice8Controller::class,'show']);
+Route::get('/practice8',[Practice8Controller::class,'show'])->name('users');
+
 Route::get('/practice9',[Practice9Controller::class,'show']);
 Route::post('/practice9/task2',[Practice9Controller::class,'task2']);
 Route::post('/practice9/task3',[Practice9Controller::class,'task3']);
@@ -170,3 +173,15 @@ Route::get('/practice9/test/method',[Practice9Controller::class,'task9to12']);
 Route::get('/practice11',[Practice11Controller::class,'set']);
 Route::get('/practice12',[Practice12Controller::class,'index']);
 Route::get('/practice12/show',[Practice12Controller::class,'show']);
+Route::get('/practice13/show1',[Practice13Controller::class,'show1']);
+Route::get('/practice13/show2',[Practice13Controller::class,'show2']);
+Route::get('/practice13/form',[Practice13Controller::class,'showform']);
+Route::get('/practice13/formuser',[Practice13Controller::class,'showformuser']);
+Route::post('/check-number', [Practice13Controller::class, 'check']);
+Route::get('/success', [Practice13Controller::class, 'success']);
+Route::post('/users/store', [Practice13Controller::class, 'store'])->name('users.store');
+Route::get('/practice13/{id}',[Practice8Controller::class,'prctice13task6'])->name('userss');
+Route::get('/practice14/201',[Practice14Controller::class,'num201']);
+Route::get('/practice14/404',[Practice14Controller::class,'num404']);
+Route::get('/practice14/404/2',[Practice14Controller::class,'num404to2']);
+Route::get('/practice14/task4',[Practice14Controller::class,'task4']);
