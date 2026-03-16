@@ -16,9 +16,9 @@ return new class extends Migration {
             $table->string('surname');
             $table->string('age');
             $table->string('sex');
-            $table->date('birthday');
-            $table->string('password');
-            $table->string('remember_token');
+            $table->date('birthday')->nullable();
+            $table->string('password')->nullable();
+            $table->string('remember_token')->nullable();
             
         });
     }
