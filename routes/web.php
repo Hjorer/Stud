@@ -12,6 +12,8 @@ use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProductdropController;
 use App\Http\Controllers\Practice8Controller;
 use App\Http\Controllers\Practice9Controller;
+use App\Http\Controllers\Practice11Controller;
+use App\Http\Controllers\Practice12Controller;
 /* 
 //Маршруты 1
 //1
@@ -165,3 +167,6 @@ Route::post('/practice9/task6',[Practice9Controller::class,'task6']);
 Route::post('/practice9/task7',[Practice9Controller::class,'task7']);
 Route::match(['get','post'],'/practice9/task8/{id?}/{login?}',[Practice9Controller::class,'task8'])->name('user.profile');
 Route::get('/practice9/test/method',[Practice9Controller::class,'task9to12']);
+Route::get('/practice11',[Practice11Controller::class,'set']);
+Route::get('/practice12',[Practice12Controller::class,'index']);
+Route::get('/practice12/show',[Practice12Controller::class,'show']);

@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\user8>
  */
-class User8Factory extends Factory
+class users8Factory extends Factory
 {
-    protected $table = 'users8a2';
+    protected $table = 'users8';
     /**
      * Define the model's default state.
      *

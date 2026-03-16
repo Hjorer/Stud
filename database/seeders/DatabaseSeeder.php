@@ -4,7 +4,9 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -29,9 +31,32 @@ class DatabaseSeeder extends Seeder
         \App\Models\roles::factory(50)->create();
         \App\Models\rolesusersid::factory(50)->create();
         
-        \App\Models\user8::factory(50)->create();
+        \App\Models\users8::factory(50)->create();
         \App\Models\profiles8::factory(50)->create();
         \App\Models\users8a2::factory(50)->create();
         \App\Models\position8::factory(50)->create();
+        /* DB::table('posts')->insert([
+				[
+					'title' => 'title 1',
+					'slug'  => 'post-1',
+					'text'  => 'text text text 1',
+				],
+				[
+					'title' => 'title 2',
+					'slug'  => 'post-2',
+					'text'  => 'text text text 2',
+				],
+				[
+					'title' => 'title 3',
+					'slug'  => 'post-3',
+					'text'  => 'text text text 3',
+				],
+		    ]); */
+            $this->call([
+				Cities8Seeder::class,
+				Countries8Seeder::class,
+				Users10Seeder::class,
+				posts10Seeder::class,
+			]);
     }
 }
