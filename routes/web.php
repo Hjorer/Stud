@@ -16,6 +16,14 @@ use App\Http\Controllers\Practice11Controller;
 use App\Http\Controllers\Practice12Controller;
 use App\Http\Controllers\Practice13Controller;
 use App\Http\Controllers\Practice14Controller;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BusController;
+use App\Http\Controllers\RouteController;
+use App\Http\Controllers\RideController;
+use App\Http\Controllers\AdminUserController;
+use App\Models\Bus;
+use App\Models\Route as BusRoute;
+use App\Models\Ride;
 /* 
 //Маршруты 1
 //1
@@ -147,41 +155,80 @@ Route::get('/three', [UserController::class, 'methodthree']); */
 //Blade 4
 
 //1
-Route::get('/pbz1',[FourController::class,'one']);
-Route::get('/show',[DBController::class,'show']);
-Route::get('/prod',[ProducttController::class,'show'])->name('product.show');
-Route::post('/prod',[ProducttController::class,'store'])->name('product.store');
-Route::delete('/drop/{id}',[ProductdropController::class,'drop'])->name('product.drop');
-Route::get('/show12',[DBController::class,'show']);
-Route::get('/show1',[DBController::class,'show1']);
-Route::get('/show2',[DBController::class,'show2']);
-Route::get('/s',[ArticleController::class ,'show']);
-Route::get('/st',[ArticleController::class ,'store']);
-Route::get('/slay',[PostsController::class ,'show']);
-Route::get('/drop',[ProductdropController::class,'show']);
-Route::get('/practice8',[Practice8Controller::class,'show'])->name('users');
+Route::get('/pbz1', [FourController::class, 'one']);
+Route::get('/show', [DBController::class, 'show']);
+Route::get('/prod', [ProducttController::class, 'show'])->name('product.show');
+Route::post('/prod', [ProducttController::class, 'store'])->name('product.store');
+Route::delete('/drop/{id}', [ProductdropController::class, 'drop'])->name('product.drop');
+Route::get('/show12', [DBController::class, 'show']);
+Route::get('/show1', [DBController::class, 'show1']);
+Route::get('/show2', [DBController::class, 'show2']);
+Route::get('/s', [ArticleController::class, 'show']);
+Route::get('/st', [ArticleController::class, 'store']);
+Route::get('/slay', [PostsController::class, 'show']);
+Route::get('/drop', [ProductdropController::class, 'show']);
+Route::get('/practice8', [Practice8Controller::class, 'show'])->name('users');
 
-Route::get('/practice9',[Practice9Controller::class,'show']);
-Route::post('/practice9/task2',[Practice9Controller::class,'task2']);
-Route::post('/practice9/task3',[Practice9Controller::class,'task3']);
-Route::post('/practice9/task4',[Practice9Controller::class,'task4']);
-Route::post('/practice9/task5',[Practice9Controller::class,'task5']);
-Route::post('/practice9/task6',[Practice9Controller::class,'task6']);
-Route::post('/practice9/task7',[Practice9Controller::class,'task7']);
-Route::match(['get','post'],'/practice9/task8/{id?}/{login?}',[Practice9Controller::class,'task8'])->name('user.profile');
-Route::get('/practice9/test/method',[Practice9Controller::class,'task9to12']);
-Route::get('/practice11',[Practice11Controller::class,'set']);
-Route::get('/practice12',[Practice12Controller::class,'index']);
-Route::get('/practice12/show',[Practice12Controller::class,'show']);
-Route::get('/practice13/show1',[Practice13Controller::class,'show1']);
-Route::get('/practice13/show2',[Practice13Controller::class,'show2']);
-Route::get('/practice13/form',[Practice13Controller::class,'showform']);
-Route::get('/practice13/formuser',[Practice13Controller::class,'showformuser']);
+Route::get('/practice9', [Practice9Controller::class, 'show']);
+Route::post('/practice9/task2', [Practice9Controller::class, 'task2']);
+Route::post('/practice9/task3', [Practice9Controller::class, 'task3']);
+Route::post('/practice9/task4', [Practice9Controller::class, 'task4']);
+Route::post('/practice9/task5', [Practice9Controller::class, 'task5']);
+Route::post('/practice9/task6', [Practice9Controller::class, 'task6']);
+Route::post('/practice9/task7', [Practice9Controller::class, 'task7']);
+Route::match(['get', 'post'], '/practice9/task8/{id?}/{login?}', [Practice9Controller::class, 'task8'])->name('user.profile');
+Route::get('/practice9/test/method', [Practice9Controller::class, 'task9to12']);
+Route::get('/practice11', [Practice11Controller::class, 'set']);
+Route::get('/practice12', [Practice12Controller::class, 'index']);
+Route::get('/practice12/show', [Practice12Controller::class, 'show']);
+Route::get('/practice13/show1', [Practice13Controller::class, 'show1']);
+Route::get('/practice13/show2', [Practice13Controller::class, 'show2']);
+Route::get('/practice13/form', [Practice13Controller::class, 'showform']);
+Route::get('/practice13/formuser', [Practice13Controller::class, 'showformuser']);
 Route::post('/check-number', [Practice13Controller::class, 'check']);
 Route::get('/success', [Practice13Controller::class, 'success']);
 Route::post('/users/store', [Practice13Controller::class, 'store'])->name('users.store');
-Route::get('/practice13/{id}',[Practice8Controller::class,'prctice13task6'])->name('userss');
-Route::get('/practice14/201',[Practice14Controller::class,'num201']);
-Route::get('/practice14/404',[Practice14Controller::class,'num404']);
-Route::get('/practice14/404/2',[Practice14Controller::class,'num404to2']);
-Route::get('/practice14/task4',[Practice14Controller::class,'task4']);
+Route::get('/practice13/{id}', [Practice8Controller::class, 'prctice13task6'])->name('userss');
+Route::get('/practice14/201', [Practice14Controller::class, 'num201']);
+Route::get('/practice14/404', [Practice14Controller::class, 'num404']);
+Route::get('/practice14/404/2', [Practice14Controller::class, 'num404to2']);
+Route::get('/practice14/task4', [Practice14Controller::class, 'task4']);
+
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+    Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::post('/register', [AuthController::class, 'register']);
+});
+
+Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth');
+Route::middleware('auth')->group(function () {
+    Route::get('/guest', function () {
+        return view('WebBusSite.guest.index', [
+            'buses' => Bus::all(),
+            'routes' => BusRoute::all(),
+            'rides' => Ride::with(['bus', 'route'])->get(),
+        ]);
+    })->name('guest.index');
+    Route::get('/buses', [BusController::class, 'index']);
+    Route::get('/routes', [RouteController::class, 'index']);
+    Route::get('/rides', [RideController::class, 'index']);
+});
+Route::middleware(['auth', 'role:dispatcher,admin'])->group(function () {
+    Route::get('/dispatcher', function () {
+        return view('WebBusSite.dispatcher.index', [
+            'buses' => Bus::all(),
+            'routes' => BusRoute::all(),
+            'rides' => Ride::with(['bus', 'route'])->get(),
+        ]);
+    })->name('dispatcher.index');
+    Route::resource('buses', BusController::class)->except(['index']);
+    Route::resource('routes', RouteController::class)->except(['index']);
+    Route::resource('rides', RideController::class)->except(['index']);
+});
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/admin', [AdminUserController::class, 'index'])->name('admin.index');
+    Route::post('/admin/users', [AdminUserController::class, 'store']);
+    Route::put('/admin/users/{user}/password', [AdminUserController::class, 'updatePassword']);
+    Route::delete('/admin/users/{user}', [AdminUserController::class, 'destroy']);
+});

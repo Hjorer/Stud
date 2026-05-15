@@ -11,7 +11,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        // Привязываем системное имя User к вашему классу users
+        if (!class_exists('App\Models\User')) {
+            class_alias(\App\Models\users::class, 'App\Models\User');
+        }
     }
 
     /**
