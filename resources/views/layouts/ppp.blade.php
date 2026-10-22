@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Example Shop</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+    />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">
+  </head>
+  <body>
+    <header>
+      <div class="header-top py-3">
+        <div class="container">
+          <div class="row">
+            <div class="col icon-phone">
+              <a href="tel:+880055553535"
+                ><i class="fa fa-phone-square" aria-hidden="true"></i
+              ></a>
+              8-800-5555-35-35
+            </div>
+            <div class="col icons text-end">
+              <form id="search">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Search..." aria-label="Search..." name="s">
+                  <button class="btn close-search" type="button"><i class="fa fa-times"></i></button>
+                  <button class="btn" type="submit"><i class="fa fa-search"></i></button>
+                </div>
+              </form>
+              <a href="#" class="open-search"><i class="fa fa-search" aria-hidden="true"></i></a>
+              <a href="#" class="position-relative" data-bs-toggle="modal" data-bs-target="#modalCart"
+                ><i class="fa fa-shopping-cart" aria-hidden="true"></i> 
+              <span class="position-absolute top-2 start-100 translate-middle badge rounded-circle bg-danger">
+              <span class="badge text-bg-danger">0</span>
+            </span>
+        </a>
+              <!-- Modal -->
+              <div
+                class="modal fade"
+                id="modalCart"
+                tabindex="-1"
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog modal-xl text-start">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">
+                        Корзина
+                      </h1>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">Фото</th>
+                                <th scope="col">Товар</th>
+                                <th scope="col">Кол-во</th>
+                                <th scope="col">Цена</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td><img src="img/1.jpg" alt=""></td>
+                                <td><a href="#">Apple</a></td>
+                                <td>2</td>
+                                <td>2000</td>
+                              </tr>
+                              <tr>
+                                <td><img src="img/1.jpg" alt=""></td>
+                                <td><a href="#">Apple</a></td>
+                                <td>2</td>
+                                <td>2000</td>
+                              </tr>
+                              <tr>
+                                <td><img src="img/1.jpg" alt=""></td>
+                                <td><a href="#">Apple</a></td>
+                                <td>2</td>
+                                <td>2000</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                    </div>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-danger"
+                        data-bs-dismiss="modal"
+                      >
+                        Закрыть
+                      </button>
+                      <button type="button" class="btn btn-primary">
+                        Оформить заказ
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="dropdown d-inline-block"></div>
+              <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown"
+                ><i class="fa fa-user-circle-o" aria-hidden="true"></i
+              ></a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Авторизация</a></li>
+                  <li><a class="dropdown-item" href="#">Регистрация</a></li>
+                </ul>
+              </div>
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="header-bottom py-3">
+        <div class="container">
+          <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">Shop Example</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Компьютеры</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Планшеты</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Ноутбуки
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Mac</a></li>
+                      <li><a class="dropdown-item" href="#">Windows</a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link">Камеры</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+    
+    <div class="container-fluid my-carousel">
+      <div id="carouselExampleIndicators" class="carousel slide">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="img/2.jpg" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="img/3.jpg" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="img/4.jpg" class="d-block w-100" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+
+    <section class="products">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h3 class="section-title">
+              Рекомендуемые товары
+            </h3>
+          </div>
+          <div class="col-md-4 col-sm-6 mb-3">
+            <div class="product-card">
+              <div class="product-thumb">
+                <img src="img/1.jpg" alt="">
+              </div>
+              <div class="product-details">
+                <h4><a href="#">iPhone</a></h4>
+                <p>Lorem ipsum dolor sit amet consectetur.</p>
+                <div class="product-bottom d-flex justify-content-between">
+                  <div class="product-price">
+                    <small>$180.00</small> $100.00
+                  </div>
+                  <div class="product-link">
+                    <a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 mb-3">
+            <div class="product-card">
+              <div class="product-thumb">
+                <img src="img/1.jpg" alt="">
+              </div>
+              <div class="product-details">
+                <h4><a href="#">iPhone iPhone iPhone iPhone iPhone iPhone iPhone iPhone iPhone iPhone iPhone</a></h4>
+                <p>Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit amet consectetur.</p>
+                <div class="product-bottom d-flex justify-content-between">
+                  <div class="product-price">
+                    <small>$180.00</small> $100.00
+                  </div>
+                  <div class="product-link">
+                    <a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 mb-3">
+            <div class="product-card">
+              <div class="product-thumb">
+                <img src="img/1.jpg" alt="">
+              </div>
+              <div class="product-details">
+                <h4><a href="#">iPhone iPhone iPhone iPhone iPhone iPhone iPhone</a></h4>
+                <p>Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit amet consectetur.</p>
+                <div class="product-bottom d-flex justify-content-between">
+                  <div class="product-price">
+                    <small>$180.00</small> $100.00
+                  </div>
+                  <div class="product-link">
+                    <a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 mb-3">
+            <div class="product-card">
+              <div class="product-thumb">
+                <img src="img/1.jpg" alt="">
+              </div>
+              <div class="product-details">
+                <h4><a href="#">iPhone iPhone iPhone iPhone iPhone iPhone iPhone</a></h4>
+                <p>Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit amet consectetur.</p>
+                <div class="product-bottom d-flex justify-content-between">
+                  <div class="product-price">
+                    <small>$180.00</small> $100.00
+                  </div>
+                  <div class="product-link">
+                    <a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+<footer>
+  <section class="footer"></section>
+</footer>
+    <button id="top">
+      <i class="fa fa-sort-asc" aria-hidden="true"></i>
+    </button>
+
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="{{ asset('assets/js/main.js') }}" defer></script>
+    <script src="{{ asset('assets/js/bootstrap.bundle.js') }}" defer></script>
+  </body>
+</html>
