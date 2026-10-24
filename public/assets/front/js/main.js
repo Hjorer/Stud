@@ -1,32 +1,32 @@
 $(function () {
 
-	$('.open-search').click(function (e) {
-		e.preventDefault();
-		$('#search').addClass('active');
-	});
+    $('.open-search').click(function (e) {
+        e.preventDefault();
+        $('#search').addClass('active');
+    });
 
-	$('.close-search').click(function () {
-		$('#search').removeClass('active');
-	});
+    $('.close-search').click(function () {
+        $('#search').removeClass('active');
+    });
 
-	$(window).on("scroll", function () {
-		if ($(window).scrollTop() > 200) {
-			$("#top").fadeIn();
-		} else {
-			$("#top").fadeOut();
-		}
-	});
+    $(window).on("scroll", function () {
+        if ($(window).scrollTop() > 200) {
+            $("#top").fadeIn();
+        } else {
+            $("#top").fadeOut();
+        }
+    });
 
-	$("#top").click(function () {
-		$("html").animate({ scrollTop: 0 }, 10)
-	});
+    $("#top").click(function () {
+        $("html").animate({ scrollTop: 0 }, 10)
+    });
 
 });
 function showCart(cart) {
     $('#cart-modal .modal-body').html(cart);
-    var cartModalEl = document.getElementById('cart-modal');
-    var modal = bootstrap.Modal.getOrCreateInstance(cartModalEl);
-    modal.show();
+    $('#cart-modal').modal();
+    let cartQty = $('#modal-cart-qty').text() ? $('#modal-cart-qty').text() : 0;
+    $('.mini-cart-qty').text(cartQty);
 }
 
 function getCart(action) {
@@ -42,7 +42,8 @@ function getCart(action) {
     });
 }
 
-$(function() {
+
+$(function () {
     $('.addtocart').on('submit', function () {
         let form = $(this);
         $.ajax({

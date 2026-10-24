@@ -18,15 +18,17 @@
                             </a>
                         </td>
                         <td><a href="{{ route('products.show', ['slug' => $item['slug']]) }}">{{ $item['title'] }}</a></td>
-                        <td>{{ $item['price'] }}</td>
+                        <td>@price_format($item['price']) руб.</td>
                         <td>{{ $item['qty'] }}</td>
                     </tr>
                 @endforeach
                 <tr>
-                    <td id="modal-cart-qty" colspan="4" align="right">Итого: {{ session('cart_qty') }}</td>
+                    <td colspan="3" align="right">Итого:</td>
+                    <td id="modal-cart-qty">{{ session('cart_qty') }}</td>
                 </tr>
                 <tr>
-                    <td id="modal-cart-total" colspan="4" align="right">На сумму: {{ session('cart_total') }}</td>
+                    <td colspan="3" align="right">На сумму:</td>
+                    <td id="modal-cart-total">@price_format(session('cart_total')) руб.</td>
                 </tr>
             </tbody>
         </table>

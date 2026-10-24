@@ -14,7 +14,7 @@
             </li>
             <li class="nav-item">
                 <button onclick="getCart('{{ route('cart.show') }}')" type="button" class="btn btn-primary">
-                    Корзина <span class="badge badge-light">3</span>
+                    Корзина <span class="badge badge-light mini-cart-qty">{{ session('cart_qty') ?? 0 }}</span>
                 </button>
             </li>
         </ul>
