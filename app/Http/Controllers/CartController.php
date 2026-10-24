@@ -34,4 +34,12 @@ class CartController extends Controller
         return view('cart.cart-modal');
     }
 
+    public function clear()
+    {
+        session()->forget('cart');
+        session()->forget('cart_qty');
+        session()->forget('cart_total');
+        return view('cart.cart-modal');
+    }
+
 }

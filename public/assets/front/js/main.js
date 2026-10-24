@@ -27,7 +27,14 @@ function showCart(cart) {
     $('#cart-modal').modal();
     let cartQty = $('#modal-cart-qty').text() ? $('#modal-cart-qty').text() : 0;
     $('.mini-cart-qty').text(cartQty);
+
+    if (cartQty) {
+        $('#cart-modal .modal-footer button.btn-cart').removeClass('d-none');
+    } else {
+        $('#cart-modal .modal-footer button.btn-cart').addClass('d-none');
+    }
 }
+
 
 function getCart(action) {
     $.ajax({
@@ -43,7 +50,7 @@ function getCart(action) {
 }
 
 
-$(function() {
+$(function () {
     $('.addtocart').on('submit', function () {
         let form = $(this);
         $.ajax({
@@ -76,3 +83,15 @@ $(function() {
     });
 });
 
+function clearCart(action) {
+    $.ajax({
+        url: action,
+        type: 'get',
+        success: function (result) {
+            showCart(result);
+        },
+        error: function () {
+            alert('Error!');
+        }
+    });
+}
