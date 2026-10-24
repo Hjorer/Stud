@@ -22,22 +22,42 @@ $(function () {
 	});
 
 });
-$(function () {
-	$('.addtocart').on('submit', function () {
-		let form = $(this);
-		$.ajax({
-			url: form.attr('action'),
-			data: form.serialize(),
-			type: 'post',
-			success: function (result) {
-				console.log(result);
-			},
-			error: function (msg) {
-				alert('Error!');
-				console.log(msg.responseJSON);
-				form[0].reset();
-			}
-		});
-		return false;
-	});
+function showCart(cart) {
+    $('#cart-modal .modal-body').html(cart);
+    var cartModalEl = document.getElementById('cart-modal');
+    var modal = bootstrap.Modal.getOrCreateInstance(cartModalEl);
+    modal.show();
+}
+
+function getCart(action) {
+    $.ajax({
+        url: action,
+        type: 'get',
+        success: function (result) {
+            showCart(result);
+        },
+        error: function () {
+            alert('Error!');
+        }
+    });
+}
+
+$(function() {
+    $('.addtocart').on('submit', function () {
+        let form = $(this);
+        $.ajax({
+            url: form.attr('action'),
+            data: form.serialize(),
+            type: 'post',
+            success: function (result) {
+                showCart(result);
+            },
+            error: function (msg) {
+                alert('Error!');
+                console.log(msg.responseJSON);
+                form[0].reset();
+            }
+        });
+        return false;
+    });
 });

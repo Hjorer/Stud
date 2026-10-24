@@ -31,7 +31,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Корзина</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -48,7 +48,7 @@
             <tbody>
               <tr>
                 <td><a href="product.html"><img src="{{ asset('assets/front/img/1.jpg') }}"
-                      alt="CORT AD810M Акустическая гитара" ></a></td>
+                      alt="CORT AD810M Акустическая гитара"></a></td>
                 <td><a href="product.html">CORT AD810M Акустическая гитара</a></td>
                 <td>2 799</td>
                 <td>1</td>
@@ -67,15 +67,16 @@
           </table>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           <button type="button" class="btn btn-primary">Оформить заказ</button>
         </div>
       </div>
     </div>
   </div>
-  <script src="https://jquery.com"></script>
-  <script src="{{ asset('assets/front/js/bootstrap.bundle.js') }}" defer></script>
-  <script src="{{ asset('assets/front/js/main.js') }}" defer></script>
+  <script src="{{ asset('assets/front/js/jquery-3.6.0.js') }}"></script>
+  <script src="{{ asset('assets/front/js/bootstrap.bundle.js') }}"></script>
+  <script src="{{ asset('assets/front/js/main.js') }}"></script>
+
 </body>
 
 </html>
