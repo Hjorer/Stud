@@ -27,4 +27,11 @@ class CartController extends Controller
     {
         return view('cart.cart-modal');
     }
+    public function delItem($product_id)
+    {
+        $cart = new Cart();
+        $cart->delItem($product_id);
+        return view('cart.cart-modal');
+    }
+
 }

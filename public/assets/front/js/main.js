@@ -43,7 +43,7 @@ function getCart(action) {
 }
 
 
-$(function () {
+$(function() {
     $('.addtocart').on('submit', function () {
         let form = $(this);
         $.ajax({
@@ -61,4 +61,18 @@ $(function () {
         });
         return false;
     });
+
+    $('#cart-modal .modal-body').on('click', '.del-item', function () {
+        $.ajax({
+            url: $(this).data('action'),
+            type: 'get',
+            success: function (result) {
+                showCart(result);
+            },
+            error: function () {
+                alert('Error!');
+            }
+        });
+    });
 });
+
