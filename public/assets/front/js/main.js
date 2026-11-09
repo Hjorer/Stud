@@ -24,7 +24,7 @@ $(function () {
 });
 function showCart(cart) {
     $('#cart-modal .modal-body').html(cart);
-    $('#cart-modal').modal();
+    $('#cart-modal').modal('show');
     let cartQty = $('#modal-cart-qty').text() ? $('#modal-cart-qty').text() : 0;
     $('.mini-cart-qty').text(cartQty);
 
