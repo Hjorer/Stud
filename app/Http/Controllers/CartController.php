@@ -3,16 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CartController extends Controller
 {
     public function add(Request $request)
     {
         $request->validate([
-            'product_id' => 'required|integer',
-            'qty' => 'required|integer',
+            'product_id' => 'required|integer|exists:products,id',
+            'qty'        => 'required|integer|min:1',
+        ], [
+            'qty.min'      => 'Количество товара не может быть меньше 1 (0 или отрицательное число).',
+            'qty.integer'  => 'Укажите целое число товаров.',
+            'qty.required' => 'Укажите количество товара.',
         ]);
         $data = $request->all();
 

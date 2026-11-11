@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-    <a class="navbar-brand" href="{{ route('home') }}">Shop</a>
+    <a class="navbar-brand" href="{{ route('main') }}">Shop</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -9,11 +9,19 @@
             <li class="nav-item active">
                 <a class="nav-link" href="{{ route('home') }}">Главная <span class="sr-only">(current)</span></a>
             </li>
-            @foreach($categories as $category)
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('categories.show', ['slug' => $category->slug]) }}">{{ $category->title }}</a>
-                </li>
-            @endforeach
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    Категории
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    @foreach($categories as $category)
+                    <a class="dropdown-item" href="{{ route('categories.show', ['slug' => $category->slug]) }}">
+                        {{ $category->title }}
+                    </a>
+                    @endforeach
+                </div>
+            </li>
+
             <li class="nav-item">
                 <button onclick="getCart('{{ route('cart.show') }}')" type="button" class="btn btn-primary">
                     Корзина <span class="badge badge-light mini-cart-qty">{{ session('cart_qty') ?? 0 }}</span>

@@ -2,8 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Admin\MainController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\TagController;
+use App\Http\Controllers\Admin\PostController;
 
-Route::get('/', [\App\Http\Controllers\ProductController::class, 'index'])->name('home');
+Route::get('/main', [\App\Http\Controllers\ProductController::class, 'index'])->name('main');
 
 Route::get('/product/{slug}', [\App\Http\Controllers\ProductController::class, 'show'])->name('products.show');
 Route::get('/category/{slug}', [\App\Http\Controllers\CategoryController::class, 'show'])->name('categories.show');
@@ -20,16 +24,17 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
-    Route::get('/', 'MainController@index')->name('admin.index');
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], function () {
+    Route::get('/', [MainController::class, 'index'])->name('index');
     Route::resource('/categories', 'CategoryController');
     Route::resource('/tags', 'TagController');
     Route::resource('/posts', 'PostController');
+    Route::resource('products', \App\Http\Controllers\Admin\ProductController::class);
 });
 
 Route::group(['middleware' => 'guest'], function () {
-    Route::get('/register', 'UserController@create')->name('register.create');
-    Route::post('/register', 'UserController@store')->name('register.store');
+    Route::get('/register', [UserController::class, 'create'])->name('register.create');
+    Route::post('/register', [UserController::class, 'store'])->name('register.store');
 });
 
 Route::get('/login', [UserController::class, 'loginForm'])->name('login.create');
