@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserCotroller;
 
 Route::get('/', [\App\Http\Controllers\ProductController::class, 'index'])->name('home');
 
@@ -13,3 +14,8 @@ Route::get('/cart/clear', [\App\Http\Controllers\CartController::class, 'clear']
 Route::get('/cart/show', [\App\Http\Controllers\CartController::class, 'show'])->name('cart.show');
 
 Route::match(['get', 'post'], '/cart/checkout', [\App\Http\Controllers\CartController::class, 'checkout'])->name('cart.checkout');
+Route::get('/register', [UserController::class, 'create'])->name('register.create');
+Route::post('/register', [UserController::class, 'store'])->name('register.store');
+Route::get('/', function () {
+    return view('welcome');
+})->name('home');
