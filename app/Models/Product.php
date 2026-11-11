@@ -19,6 +19,19 @@ class Product extends Model
             ]
         ];
     }
+    protected $fillable = [
+        'title',
+        'slug',
+        'content',
+        'category_id',
+        'status_id',
+        'img',
+        'price',
+        'old_price',
+        'hit',
+        'sale',
+        'qty',
+    ];
 
     public function category()
     {
@@ -37,5 +50,4 @@ class Product extends Model
             return asset("storage/{$this->img}");
         }
     }
-
 }

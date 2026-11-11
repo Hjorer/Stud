@@ -1,5 +1,6 @@
 @extends('layouts.layout')
-@section('title')@parent :: {{ $product->title }}
+@section('title')
+    @parent :: {{ $product->title }}
 @endsection
 @section('content')
     <div class="col-md-12">
@@ -10,10 +11,12 @@
     </div>
     <div class="col-sm-8">
         <ul class="list-unstyled">
-            <li>Категория: <a href="{{ route('categories.show', ['slug' => $product->category->slug]) }}">{{ $product->category->title }}</a></li>
+            <li>Категория: <a
+                    href="{{ route('categories.show', ['slug' => $product->category->slug]) }}">{{ $product->category->title }}</a>
+            </li>
             <li>Наличие: <i class="{{ $product->status->icon }}"></i> {{ $product->status->title }}</li>
             <li>Цена: <span class="card-price text-center">
-                    @if($product->old_price)
+                    @if ($product->old_price)
                         <del><small>@price_format($product->old_price) руб.</small></del>
                     @endif
                     @price_format($product->price) руб.
