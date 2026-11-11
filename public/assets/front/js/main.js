@@ -88,10 +88,34 @@ function clearCart(action) {
         url: action,
         type: 'get',
         success: function (result) {
-            showCart(result);
+            let now_location = document.location.pathname;
+            if (now_location == '/cart/checkout') {
+                location = '/cart/checkout';
+            } else {
+                showCart(result);
+            }
         },
         error: function () {
-            alert('Error!');
+            alert('Error');
         }
     });
 }
+
+$('#cart-modal .modal-body, .cart-table').on('click', '.del-item', function () {
+    $.ajax({
+        url: $(this).data('action'),
+        type: 'get',
+        success: function (result) {
+            let now_location = document.location.pathname;
+            if (now_location == '/cart/checkout') {
+                location = '/cart/checkout';
+            } else {
+                showCart(result);
+            }
+        },
+        error: function (msg) {
+            alert('Error!');
+        }
+    });
+});
+

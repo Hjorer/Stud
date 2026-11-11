@@ -39,8 +39,7 @@
 
         </div>
         <!-- Modal -->
-        <div class="modal fade cart-modal" id="cart-modal" tabindex="-1" aria-labelledby="exampleModalLabel"
-          aria-hidden="true">
+        <div class="modal fade cart-modal" id="cart-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-xl">
             <div class="modal-content">
               <div class="modal-header">
@@ -54,10 +53,8 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button"
-                  class="btn btn-primary btn-cart @if(empty(session('cart'))) d-none @endif">Оформить заказ</button>
-                <button type="button" onclick="clearCart('{{ route('cart.clear') }}')"
-                  class="btn btn-danger btn-cart @if(empty(session('cart'))) d-none @endif">Очистить корзину</button>
+                <a href="{{ route('cart.checkout') }}" class="btn btn-primary btn-cart @if(empty(session('cart'))) d-none @endif">Оформить заказ</a>
+                <button type="button" onclick="clearCart('{{ route('cart.clear') }}')" class="btn btn-danger btn-cart @if(empty(session('cart'))) d-none @endif">Очистить корзину</button>
               </div>
             </div>
           </div>
