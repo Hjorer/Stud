@@ -16,19 +16,39 @@ class UserController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email'=> 'required|email|unique:users',
+            'email' => 'required|email|unique:users',
             'password' => 'required|confirmed',
         ]);
 
-        $user = User::create ([
-            'name'=>$request->name,
-            'email'=>$request->email,
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
             'password' => bcrypt($request->password),
         ]);
 
         session()->flash('success', 'Регистрация пройдена');
         Auth::login($user);
         return redirect()->route('home');
+    }
+    public function login(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
 
+        if (Auth::attempt([
+            'email' => $request->email,
+            'password' => $request->password,
+        ])) {
+            session()->flash('success', 'You are logged');
+            if (Auth::user()->is_admin) {
+                return redirect()->route('admin.index');
+            } else {
+                return redirect()->home();
+            }
+        }
+
+        return redirect()->back()->with('error', 'Incorrect login or password');
     }
 }
